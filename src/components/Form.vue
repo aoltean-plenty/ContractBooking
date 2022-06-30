@@ -68,22 +68,26 @@
           class="col-md-6"
           label="Email"
           type="email"
-          id="inputEmail"/>
+          id="inputEmail"
+          v-model="email.email"/>
       <BaseInput
           class="col-md-6"
           label="Repeat Email"
           type="email"
-          id="inputEmail2"/>
+          id="inputEmail2"
+          v-model="email.repeat"/>
       <BaseInput
           class="col-md-6"
           label="Password"
           type="password"
-          id="inputPassword"/>
+          id="inputPassword"
+          v-model="password.password"/>
       <BaseInput
           class="col-md-6"
           label="Repeat Password"
           type="password"
-          id="inputPassword2"/>
+          id="inputPassword2"
+          v-model="password.repeat"/>
       <BaseInput type="submit"/>
     </div>
   </form>
