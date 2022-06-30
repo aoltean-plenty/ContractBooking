@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-6">
     <label>{{ label }}</label>
-    <select class="form-control">
+    <select class="form-control" v-model="selectedOption" @change="optionChanged">
       <option value="1">Australia</option>
       <option value="2">Uk</option>
     </select>
@@ -12,8 +12,20 @@
 export default {
   name: "SelectField",
 
+  data(){
+    return{
+      selectedOption: null
+    }
+  },
+
   props:{
     label: String,
+  },
+
+  methods:{
+    optionChanged(value){
+       this.$emit('update:option',this.selectedOption) ;
+    }
   }
 }
 </script>

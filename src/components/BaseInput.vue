@@ -1,7 +1,12 @@
 <template>
   <div :class="column">
     <label><small>{{label}}</small></label>
-    <input @input="updateValue($event.target.value)" :type="type" class="form-control" :value="value" :id="id"/>
+    <input
+        :type="type"
+        class="form-control"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+        :id="id"/>
   </div>
 </template>
 
@@ -13,7 +18,12 @@
       label:String,
       column:String,
       type:String,
-      value:String
+      value:String,
+
+      modelValue:{
+        type: [String,Number],
+        default: ''
+      }
     },
 
   }
