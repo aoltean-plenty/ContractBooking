@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-6">
-    <label>{{ label }}</label>
-    <select class="form-control">
+    <label><small>{{ label }}</small></label>
+    <select class="form-control" v-model="selectedOption" @change="optionChanged">
       <option value="1">Australia</option>
       <option value="2">Uk</option>
     </select>
@@ -12,27 +12,48 @@
 export default {
   name: "SelectField",
 
+  data(){
+    return{
+      selectedOption: null
+    }
+  },
+
   props:{
     label: String,
+  },
+
+  methods:{
+    optionChanged(value){
+       this.$emit('update:option',this.selectedOption) ;
+    }
   }
 }
 </script>
 
 <style scoped>
-label{
-  line-height: 1;
-}
 
+label{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: var(--weight-bold);
+  font-size: var(--medium-size);
+  line-height: var(--medium-line);
+  letter-spacing: var(--small-space);
+  color: var(--dark-grey);
+}
 select{
   margin-bottom: 10px;
-  padding: 6px 13px 6px 13px;
-  border-color: var(--light-grey);
+  padding: 16px 24px;
+  gap: 8px;
+  border: 1px solid var(--border-grey);
+  border-radius: 5px;
   outline: none;
+  height: 56px;
 }
 
 select:focus{
   outline: none;
-  border-color:var(--light-grey);
+  border-color:var(--border-grey);
   box-shadow: none;
 }
 </style>

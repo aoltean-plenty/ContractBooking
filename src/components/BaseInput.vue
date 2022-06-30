@@ -1,7 +1,12 @@
 <template>
   <div :class="column">
     <label><small>{{label}}</small></label>
-    <input @input="updateValue($event.target.value)" :type="type" class="form-control" :value="value" :id="id"/>
+    <input
+        :type="type"
+        class="form-control"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+        :id="id"/>
   </div>
 </template>
 
@@ -13,7 +18,12 @@
       label:String,
       column:String,
       type:String,
-      value:String
+      value:String,
+
+      modelValue:{
+        type: [String,Number],
+        default: ''
+      }
     },
 
   }
@@ -22,19 +32,35 @@
 <style scoped>
 
 label{
-  line-height: 1;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: var(--weight-bold);
+  font-size: var(--medium-size);
+  line-height: var(--medium-line);
+  letter-spacing: var(--small-space);
+  color: var(--dark-grey);
 }
 
 input{
   margin-bottom: 10px;
-  padding: 6px 13px 6px 13px;
-  border-color: var(--light-grey);
+  padding:16px 24px;
+  box-sizing: border-box;
+  border:1px solid var(--border-grey);
+  background-color: var(--plain-white);
   outline: none;
+  border-radius: 5px;
+  height: 56px;
+  transition: 0.25s ease-in-out;
+}
+
+input:hover{
+  background-color: var(--background-grey);
 }
 
 input:focus{
   outline: none;
-  border-color:var(--light-grey);
+  border-color:var(--fade-blue);
+  background-color: var(--plain-white);
   box-shadow: none;
 }
 </style>
