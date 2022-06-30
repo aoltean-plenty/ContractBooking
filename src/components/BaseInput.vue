@@ -7,6 +7,7 @@
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         :id="id"/>
+    <span class="error-message">{{errorMessage}}</span>
   </div>
 </template>
 
@@ -19,6 +20,8 @@
       column:String,
       type:String,
       value:String,
+      errorMessage:String,
+      error: false,
 
       modelValue:{
         type: [String,Number],

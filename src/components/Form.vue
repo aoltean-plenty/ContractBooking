@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="submitForm">
     <div class="row">
       <BaseInput
           class="col-lg-6"
@@ -19,12 +19,14 @@
           type="text"
           id="inputName2"
           v-model="firstName"/>
+      <span v-if="v$.lastName.$error">{{v$.lastName.$errors[0].$message}}</span>
       <BaseInput
           class="col-lg-6"
           label="Last Name"
           type="text"
           id="inputName3"
           v-model="lastName"/>
+      <span v-if="v$.lastName.$error">{{v$.lastName.$errors[0].$message}}</span>
       <BaseInput
           class="col-lg-6"
           label="Phone"
@@ -82,6 +84,7 @@
           type="password"
           id="inputPassword"
           v-model="password.password"/>
+      <span v-if="v$.password.$error">{{v$.password.$errors[0].$message}}</span>
       <BaseInput
           class="col-md-6"
           label="Repeat Password"
@@ -94,9 +97,11 @@
 </template>
 
 <script>
-
+import useVuelidate from '@vuelidate/core'
+import { required,email,minLength,sameAs } from '@vuelidate/validators'
 import BaseInput from "./BaseInput.vue";
 import SelectField from "./SelectField.vue";
+
 
 export default {
   name: 'Form',
@@ -104,6 +109,7 @@ export default {
 
   data(){
     return{
+      v$: useVuelidate(),
       company:'',
       vatNumber:'',
       firstName: '',
@@ -128,9 +134,42 @@ export default {
     }
   },
 
+  // setup() {
+  //   return{ v$: useVuelidate()}
+  // },
+
+  validations (){
+    return{
+      firstName:{required},
+      lastName: {required},
+      phone:{required},
+      addressLine: {required},
+      postCode: {required},
+      town: {required},
+      email:{
+        email: {required,email},
+        repeat: {required,email,sameAs: sameAs(this.email.email)},
+      },
+
+      password:{
+        password: {required,minLength: minLength(8)},
+        repeat: {required, sameAs: sameAs(this.password.password)},
+      }
+    }
+  },
+
   methods:{
     optionUpdate(value){
       this.country = value;
+    },
+
+     submitForm(){
+      this.v$.$validate()
+      if(!this.v$.$error){
+        alert('Form Submitted');
+      } else{
+        alert('Form did not pass validation');
+      }
     }
   }
 
