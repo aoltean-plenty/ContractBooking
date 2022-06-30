@@ -136,7 +136,6 @@ export default {
 
 <style scoped>
 
-.alert{
-  padding: 20px 20px;
-}
+
+
 </style>
