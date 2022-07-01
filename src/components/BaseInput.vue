@@ -39,7 +39,6 @@ label{
 }
 
 input{
-  margin-bottom: 10px;
   padding:16px 24px;
   box-sizing: border-box;
   border:1px solid var(--border-grey);
@@ -59,6 +58,10 @@ input:focus{
   border-color:var(--fade-blue);
   background-color: var(--plain-white);
   box-shadow: none;
+}
+
+.form-group--error input{
+  border-color: var(--red);
 }
 
 /*** Remove arrows for number input ***/

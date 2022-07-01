@@ -2,7 +2,7 @@
   <form @submit.prevent="submitForm">
     <div class="row">
 
-      <div class="col-lg-6">
+      <div class="col-md-6">
         <BaseInput
             label="Company (optional)"
             type="text"
@@ -10,7 +10,7 @@
             v-model="company"/>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-md-6">
       <BaseInput
           label="VAT number (optional)"
           type="text"
@@ -18,18 +18,18 @@
           v-model="vatNumber"/>
       </div>
 
-      <div class="col-lg-6">
+      <div :class="[{'col-md-6': 'default-grid', 'form-group--error':v$.firstName.$error  }]">
         <BaseInput
             label="First Name"
             type="text"
             id="inputName2"
+            :class="{ 'form-group--error': v$.firstName.$error }"
             v-model="firstName"/>
         <ErrorMessage v-if="v$.firstName.$error" v-text="v$.firstName.$errors[0].$message"/>
       </div>
 
-      <div class="col-lg-6">
+      <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.lastName.$error }]">
         <BaseInput
-            class="col-lg-6"
             label="Last Name"
             type="text"
             id="inputName3"
@@ -37,7 +37,7 @@
          <ErrorMessage v-if="v$.lastName.$error" v-text="v$.lastName.$errors[0].$message"/>
       </div>
 
-      <div class="col-lg-6">
+      <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.phone.$error }]">
       <BaseInput
           label="Phone"
           type="number"
@@ -48,7 +48,7 @@
 
       <SelectField @update:option="optionUpdate" label="Country"/>
 
-    <div class="col-lg-12">
+    <div :class="[{'col-md-12': 'default-grid', 'form-group--error': v$.addressLine.$error }]">
       <BaseInput
           label="Address line 1"
           type="text"
@@ -57,7 +57,7 @@
         <ErrorMessage v-if="v$.addressLine.$error" v-text="v$.addressLine.$errors[0].$message"/>
     </div>
 
-    <div class="col-lg-12">
+    <div class="col-md-12">
       <BaseInput
           label="Address line 2"
           type="text"
@@ -65,7 +65,7 @@
           v-model="addressLine2"/>
     </div>
 
-    <div class="col-lg-12">
+    <div class="col-md-12">
       <BaseInput
           label="Address line 3"
           type="text"
@@ -74,7 +74,7 @@
     </div>
 
 
-      <div class="col-md-3">
+      <div :class="[{'col-md-3': 'default-grid', 'form-group--error': v$.postCode.$error }]">
       <BaseInput
           label="Postcode"
           type="text"
@@ -83,7 +83,7 @@
          <ErrorMessage v-if="v$.postCode.$error" v-text="v$.postCode.$errors[0].$message"/>
       </div>
 
-      <div class="col-md-9">
+      <div :class="[{'col-md-9': 'default-grid', 'form-group--error': v$.town.$error }]">
       <BaseInput
           label="Town"
           type="text"
@@ -92,7 +92,7 @@
          <ErrorMessage v-if="v$.town.$error" v-text="v$.town.$errors[0].$message"/>
       </div>
 
-      <div class="col-md-6">
+      <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.email.$error }]">
       <BaseInput
           label="Email"
           type="email"
@@ -101,7 +101,7 @@
         <ErrorMessage v-if="v$.email.$error" v-text="v$.email.$errors[0].$message"/>
       </div>
 
-      <div class="col-md-6">
+      <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.email.$error }]">
       <BaseInput
           class="col-md-6"
           label="Repeat Email"
@@ -111,7 +111,7 @@
         <ErrorMessage v-if="v$.email.$error" v-text="v$.email.$errors[0].$message"/>
       </div>
 
-      <div class="col-md-6">
+      <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.password.$error }]">
       <BaseInput
           label="Password"
           type="password"
@@ -120,13 +120,13 @@
         <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
     </div>
 
-
-      <div class="col-md-6">
+      <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.password.$error }]">
       <BaseInput
           label="Repeat Password"
           type="password"
           id="inputPassword2"
           v-model="password.repeat"/>
+        <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
       </div>
 
       <BaseInput type="submit"/>
@@ -172,10 +172,6 @@ export default {
     }
   },
 
-  // setup() {
-  //   return{ v$: useVuelidate()}
-  // },
-
   validations (){
     return{
       firstName:{required},
@@ -195,6 +191,7 @@ export default {
       }
     }
   },
+
 
   methods:{
     optionUpdate(value){

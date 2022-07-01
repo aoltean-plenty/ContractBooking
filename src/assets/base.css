@@ -16,8 +16,10 @@
   /*** Font styles ***/
   /* Font-sizes */
   --medium-size:16px;
+  --small-size:12px;
   /* Line Height */
   --medium-line:24px;
+  --small-line:18px;
   /* Letter Spacing */
   --small-space:0.6px;
   /* Font weights */
