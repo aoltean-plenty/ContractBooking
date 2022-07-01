@@ -17,5 +17,7 @@ export default {
   line-height: var(--small-line);
   letter-spacing: var(--small-space);
   color:var(--red);
+  position: relative;
+  top:-10px;
 }
 </style>
