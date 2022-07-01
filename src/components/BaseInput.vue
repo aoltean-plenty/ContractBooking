@@ -1,5 +1,4 @@
 <template>
-  <div :class="column">
     <label><small>{{label}}</small></label>
     <input
         :type="type"
@@ -7,8 +6,6 @@
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         :id="id"/>
-    <span class="error-message">{{errorMessage}}</span>
-  </div>
 </template>
 
 <script>
@@ -17,11 +14,8 @@
     props:{
       id: String,
       label:String,
-      column:String,
       type:String,
       value:String,
-      errorMessage:String,
-      error: false,
 
       modelValue:{
         type: [String,Number],

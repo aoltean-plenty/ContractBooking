@@ -1,96 +1,134 @@
 <template>
   <form @submit.prevent="submitForm">
     <div class="row">
+
+      <div class="col-lg-6">
+        <BaseInput
+            label="Company (optional)"
+            type="text"
+            id="inputCompany"
+            v-model="company"/>
+      </div>
+
+      <div class="col-lg-6">
       <BaseInput
-          class="col-lg-6"
-          label="Company (optional)"
-          type="text"
-          id="inputCompany"
-          v-model="company"/>
-      <BaseInput
-          class="col-lg-6"
           label="VAT number (optional)"
           type="text"
           id="inputVatNumber"
           v-model="vatNumber"/>
+      </div>
+
+      <div class="col-lg-6">
+        <BaseInput
+            label="First Name"
+            type="text"
+            id="inputName2"
+            v-model="firstName"/>
+        <ErrorMessage v-if="v$.firstName.$error" v-text="v$.firstName.$errors[0].$message"/>
+      </div>
+
+      <div class="col-lg-6">
+        <BaseInput
+            class="col-lg-6"
+            label="Last Name"
+            type="text"
+            id="inputName3"
+            v-model="lastName"/>
+         <ErrorMessage v-if="v$.lastName.$error" v-text="v$.lastName.$errors[0].$message"/>
+      </div>
+
+      <div class="col-lg-6">
       <BaseInput
-          class="col-lg-6"
-          label="First Name"
-          type="text"
-          id="inputName2"
-          v-model="firstName"/>
-      <span v-if="v$.lastName.$error">{{v$.lastName.$errors[0].$message}}</span>
-      <BaseInput
-          class="col-lg-6"
-          label="Last Name"
-          type="text"
-          id="inputName3"
-          v-model="lastName"/>
-      <span v-if="v$.lastName.$error">{{v$.lastName.$errors[0].$message}}</span>
-      <BaseInput
-          class="col-lg-6"
           label="Phone"
           type="number"
           id="inputPhone"
           v-model="phone"/>
+        <ErrorMessage v-if="v$.phone.$error" v-text="v$.phone.$errors[0].$message"/>
+      </div>
 
       <SelectField @update:option="optionUpdate" label="Country"/>
 
+    <div class="col-lg-12">
       <BaseInput
-          class="col-lg-12"
           label="Address line 1"
           type="text"
           id="inputAddress"
           v-model="addressLine"/>
+        <ErrorMessage v-if="v$.addressLine.$error" v-text="v$.addressLine.$errors[0].$message"/>
+    </div>
+
+    <div class="col-lg-12">
       <BaseInput
-          class="col-lg-12"
           label="Address line 2"
           type="text"
           id="inputAddress2"
           v-model="addressLine2"/>
+    </div>
+
+    <div class="col-lg-12">
       <BaseInput
-          class="col-lg-12"
           label="Address line 3"
           type="text"
           id="inputAddress3"
           v-model="addressLine3"/>
+    </div>
+
+
+      <div class="col-md-3">
       <BaseInput
-          class="col-md-3"
           label="Postcode"
           type="text"
           id="inputPlz"
           v-model="postCode"/>
+         <ErrorMessage v-if="v$.postCode.$error" v-text="v$.postCode.$errors[0].$message"/>
+      </div>
+
+      <div class="col-md-9">
       <BaseInput
-          class="col-md-9"
           label="Town"
           type="text"
           id="inputCity"
           v-model="town"/>
+         <ErrorMessage v-if="v$.town.$error" v-text="v$.town.$errors[0].$message"/>
+      </div>
+
+      <div class="col-md-6">
       <BaseInput
-          class="col-md-6"
           label="Email"
           type="email"
           id="inputEmail"
           v-model="email.email"/>
+        <ErrorMessage v-if="v$.email.$error" v-text="v$.email.$errors[0].$message"/>
+      </div>
+
+      <div class="col-md-6">
       <BaseInput
           class="col-md-6"
           label="Repeat Email"
           type="email"
           id="inputEmail2"
           v-model="email.repeat"/>
+        <ErrorMessage v-if="v$.email.$error" v-text="v$.email.$errors[0].$message"/>
+      </div>
+
+      <div class="col-md-6">
       <BaseInput
-          class="col-md-6"
           label="Password"
           type="password"
           id="inputPassword"
           v-model="password.password"/>
-      <span v-if="v$.password.$error">{{v$.password.$errors[0].$message}}</span>
+        <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
+    </div>
+
+
+      <div class="col-md-6">
       <BaseInput
-          class="col-md-6"
           label="Repeat Password"
           type="password"
           id="inputPassword2"
           v-model="password.repeat"/>
+      </div>
+
       <BaseInput type="submit"/>
     </div>
   </form>
@@ -101,11 +139,11 @@ import useVuelidate from '@vuelidate/core'
 import { required,email,minLength,sameAs } from '@vuelidate/validators'
 import BaseInput from "./BaseInput.vue";
 import SelectField from "./SelectField.vue";
-
+import ErrorMessage from "./ErrorMessage.vue";
 
 export default {
   name: 'Form',
-  components: {BaseInput,SelectField},
+  components: {BaseInput,SelectField,ErrorMessage},
 
   data(){
     return{
@@ -178,7 +216,5 @@ export default {
 </script>
 
 <style scoped>
-
-
 
 </style>
