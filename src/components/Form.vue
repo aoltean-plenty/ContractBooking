@@ -114,7 +114,9 @@
       <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.password.$error }]">
       <BaseInput
           label="Password"
-          type="password"
+          :type="showPassword ? 'text' : 'password'"
+          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="showPassword = !showPassword"
           id="inputPassword"
           v-model="password.password"/>
         <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
@@ -136,10 +138,11 @@
 
 <script>
 import useVuelidate from '@vuelidate/core'
-import { required,email,minLength,sameAs } from '@vuelidate/validators'
+import { helpers,required,email,minLength,sameAs } from '@vuelidate/validators'
 import BaseInput from "./BaseInput.vue";
 import SelectField from "./SelectField.vue";
 import ErrorMessage from "./ErrorMessage.vue";
+import '@mdi/font/css/materialdesignicons.css';
 
 export default {
   name: 'Form',
@@ -148,6 +151,7 @@ export default {
   data(){
     return{
       v$: useVuelidate(),
+      showPassword: false,
       company:'',
       vatNumber:'',
       firstName: '',
@@ -184,30 +188,32 @@ export default {
         email: {required,email},
         repeat: {required,email,sameAs: sameAs(this.email.email)},
       },
-
       password:{
-        password: {required,minLength: minLength(8)},
+        password: {required,minLength: minLength(8),},
         repeat: {required, sameAs: sameAs(this.password.password)},
       }
     }
   },
-
 
   methods:{
     optionUpdate(value){
       this.country = value;
     },
 
+
+    // showPassword(){
+    //   this.visibility = 'text';
+    // },
+
+    hidePassword(){
+      this.visibility = 'passowrd';
+    },
+
      submitForm(){
       this.v$.$validate()
-      if(!this.v$.$error){
-        alert('Form Submitted');
-      } else{
-        alert('Form did not pass validation');
-      }
-    }
-  }
+    },
 
+  }
 }
 
 </script>
