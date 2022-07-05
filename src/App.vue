@@ -2,11 +2,12 @@
   <header>
   </header>
   <main>
-    <div class="row">
-      <div class="col-md-10">
+    <div class="container">
+      <div class="mx-auto">
         <Form/>
       </div>
     </div>
+
   </main>
 </template>
 
