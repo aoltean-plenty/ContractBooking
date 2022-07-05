@@ -22,23 +22,23 @@
     <ErrorMessage v-if="v$.email.$error" v-text="v$.email.$errors[0].$message"/>
   </div>
 
-  <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.password.$error }]">
+  <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.password.$error , 'password': 'hasPassword'}]">
     <BaseInput
         label="Password"
-        :type="showPassword ? 'text' : 'password'"
-        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-        @click:append="showPassword = !showPassword"
         id="inputPassword"
+        :type="passwordState ? 'password' : 'text'"
         v-model="password.password"/>
+     <i @click="showPassword" :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
     <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
   </div>
 
-  <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.password.$error }]">
+  <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.password.$error, 'password': 'hasPassword' }]">
     <BaseInput
         label="Repeat Password"
-        type="password"
         id="inputPassword2"
+        :type="passwordState ? 'password' : 'text'"
         v-model="password.repeat"/>
+    <i @click="showPassword" :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
     <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
   </div>
 </template>
@@ -58,6 +58,7 @@ export default {
   data(){
     return{
       v$: useVuelidate(),
+      passwordState: true,
       email:{
         email: '',
         repeat: '',
@@ -69,6 +70,13 @@ export default {
       },
     }
   },
+
+  methods:{
+    showPassword(){
+      this.passwordState = !this.passwordState;
+    },
+  },
+
 
   validations(){
     return{
@@ -82,10 +90,23 @@ export default {
       }
     }
   }
-
 }
 </script>
 
 <style scoped>
+
+
+.password{
+  position: relative;
+}
+
+.password i{
+  position: absolute;
+  right: 0;
+  bottom: 29.5px;
+  padding: 0 20px 0 0;
+  cursor: pointer;
+  color: var(--dark-grey);
+}
 
 </style>

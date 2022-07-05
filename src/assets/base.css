@@ -68,6 +68,9 @@
   background-color:#04485B;
 }
 
+.btn-payment:focus{
+  box-shadow: none;
+}
 /*** Headlines ***/
 .secondary-title{
   margin-top: 5px;

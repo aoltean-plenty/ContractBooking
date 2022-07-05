@@ -11,7 +11,6 @@
     </div>
   </div>
 
-
  <div v-if="isDebitActive" class="payment-container">
   <div :class="[{'col-md-12': 'default-grid', 'form-group--error': v$.accountOwner.$error }]">
     <BaseInput
@@ -44,7 +43,6 @@
   <div v-if="isInvoiceActive" class="no-result">
     <p>No result here</p>
   </div>
-
 </template>
 
 <script>
@@ -92,7 +90,6 @@ export default {
       this.isInvoiceActive = !this.isInvoiceActive;
       this.isDebitActive = !this.isDebitActive;
     }
-
   }
 }
 </script>

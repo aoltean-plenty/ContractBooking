@@ -1,7 +1,5 @@
 <template>
-
     <button :type="type" :class="btnClasses">{{ buttonText }}</button>
-
 </template>
 
 <script>
