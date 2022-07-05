@@ -56,6 +56,7 @@
 }
 
 .btn-payment{
+  outline: 0;
   color:#04485B;
   background-color: var(--plain-white);
   border:1px solid #04485B;

@@ -6,11 +6,13 @@
 
   <div class="col-md-12">
     <div class="btn-contain">
-      <Button type="button" button-text="Direct Debit" :class="[{'btn': 'btn', 'btn-payment': 'payment'}]"/>
-      <Button type="button"  button-text="Invoice" :class="[{'btn': 'btn', 'btn-payment': 'payment'}]"/>
+      <Button type="button" @click="triggerActiveDebit" button-text="Direct Debit" :class="[{'btn': 'btn', 'btn-payment': 'payment', 'active': isDebitActive}]"/>
+      <Button type="button" @click="triggerActiveInvoice"  button-text="Invoice" :class="[{'btn': 'btn', 'btn-payment': 'payment', 'active': isInvoiceActive}]"/>
     </div>
   </div>
 
+
+ <div v-if="isDebitActive" class="payment-container">
   <div :class="[{'col-md-12': 'default-grid', 'form-group--error': v$.accountOwner.$error }]">
     <BaseInput
         label="Account Owner"
@@ -37,6 +39,12 @@
         v-model="sortCode"/>
     <ErrorMessage v-if="v$.sortCode.$error" v-text="v$.sortCode.$errors[0].$message"/>
   </div>
+ </div>
+
+  <div v-if="isInvoiceActive" class="no-result">
+    <p>No result here</p>
+  </div>
+
 </template>
 
 <script>
@@ -61,6 +69,8 @@ export default {
       accountOwner:'',
       accountNumber: '',
       sortCode: '',
+      isDebitActive: true,
+      isInvoiceActive: false
     }
   },
 
@@ -70,6 +80,19 @@ export default {
       accountNumber: {required},
       sortCode: {required}
     }
+  },
+
+  methods:{
+    triggerActiveDebit(){
+      this.isDebitActive = !this.isDebitActive;
+      this.isInvoiceActive = !this.isInvoiceActive;
+    },
+
+    triggerActiveInvoice(){
+      this.isInvoiceActive = !this.isInvoiceActive;
+      this.isDebitActive = !this.isDebitActive;
+    }
+
   }
 }
 </script>
@@ -82,6 +105,12 @@ export default {
 
 .btn-contain button{
   margin: 0 3px;
+}
+
+.active{
+  color:var(--plain-white);
+  background-color:#04485B;
+  outline: 0;
 }
 
 @media screen and (max-width: 499px){
