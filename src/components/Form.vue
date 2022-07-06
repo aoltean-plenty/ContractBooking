@@ -1,7 +1,6 @@
 <template>
   <form @submit.prevent="submitForm">
     <div class="row">
-
     <ContactDetails/>
     <AddressDetails/>
     <PaymentDetails/>
@@ -12,7 +11,6 @@
           <Button type="submit" button-text="Order" :class="[{'btn': 'btn', 'btn-submit': 'submit'}]"/>
         </div>
       </div>
-
     </div>
   </form>
 </template>

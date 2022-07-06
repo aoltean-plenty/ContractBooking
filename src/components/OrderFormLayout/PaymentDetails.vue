@@ -97,6 +97,7 @@ export default {
 <style scoped>
 .btn-contain{
   margin-top: 7px;
+  margin-bottom: 10px;
   text-align: right;
 }
 

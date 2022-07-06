@@ -28,7 +28,9 @@
         id="inputPassword"
         :type="passwordState ? 'password' : 'text'"
         v-model="password.password"/>
-     <i @click="showPassword" :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+    <div :class="v$.password.$error ? 'icon-contain-error' : 'icon-contain'">
+       <i @click="showPassword" :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+    </div>
     <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
   </div>
 
@@ -38,7 +40,9 @@
         id="inputPassword2"
         :type="passwordState ? 'password' : 'text'"
         v-model="password.repeat"/>
-    <i @click="showPassword" :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+    <div :class="v$.password.$error ? 'icon-contain-error' : 'icon-contain'">
+      <i @click="showPassword" :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+    </div>
     <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
   </div>
 </template>
@@ -100,13 +104,25 @@ export default {
   position: relative;
 }
 
-.password i{
+.password .icon-contain{
   position: absolute;
   right: 0;
-  bottom: 29.5px;
+  bottom: 24.5px;
   padding: 0 20px 0 0;
   cursor: pointer;
   color: var(--dark-grey);
 }
+
+
+.password .icon-contain-error{
+  position: absolute;
+  right: 0;
+  bottom: 47.5px;
+  padding: 0 20px 0 0;
+  cursor: pointer;
+  color: var(--dark-grey);
+}
+
+
 
 </style>
