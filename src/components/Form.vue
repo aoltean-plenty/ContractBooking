@@ -22,7 +22,7 @@ import ContactDetails from "./OrderFormLayout/ContactDetails.vue";
 import AddressDetails from "./OrderFormLayout/AddressDetails.vue";
 import PaymentDetails from "./OrderFormLayout/PaymentDetails.vue";
 import AccountDetails from './OrderFormLayout/AccountDetails.vue';
-import '@mdi/font/css/materialdesignicons.css';
+
 
 
 export default {
