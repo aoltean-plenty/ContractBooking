@@ -1,78 +1,78 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
-:root{
+:root {
   /*** Colors ***/
-  --border-grey:#D8E4EB;
-  --background-grey:#fbfbfb;
-  --dark-grey:#374D55;
-  --plain-white:#ffffff;
-  --fade-blue:#008EBD;
-  --gren:#4cad33;
-  --red:#d4021d;
+  --border-grey: #d8e4eb;
+  --background-grey: #fbfbfb;
+  --dark-grey: #374d55;
+  --plain-white: #ffffff;
+  --fade-blue: #008ebd;
+  --gren: #4cad33;
+  --red: #d4021d;
 
   /*** Font styles ***/
 
   /* Font-sizes */
-  --big-size:20px;
-  --medium-size:16px;
-  --small-size:12px;
+  --big-size: 20px;
+  --medium-size: 16px;
+  --small-size: 12px;
 
   /* Line Height */
-  --medium-line:24px;
-  --small-line:18px;
+  --medium-line: 24px;
+  --small-line: 18px;
 
   /* Letter Spacing */
-  --small-space:0.6px;
+  --small-space: 0.6px;
 
   /* Font weights */
-  --weight-bold:700;
-  --weight-medium:400;
+  --weight-bold: 700;
+  --weight-medium: 400;
 }
 
 /*** Buttons ***/
-.btn{
+.btn {
   padding: 16px 32px;
   gap: 8px;
   /*width: 200px;*/
   height: 56px;
-  font-size:var(--medium-size);
+  font-size: var(--medium-size);
   font-weight: var(--weight-bold);
   line-height: var(--medium-line);
   letter-spacing: var(--small-space);
-  transition:0.20s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
-.btn-submit{
-  color:var(--plain-white);
+.btn-submit {
+  color: var(--plain-white);
   background-color: var(--red);
 }
 
-.btn-submit:hover{
-  color:var(--plain-white);
+.btn-submit:hover {
+  color: var(--plain-white);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.btn-payment{
+.btn-payment {
   outline: 0;
-  color:#04485B;
+  color: #04485b;
   background-color: var(--plain-white);
-  border:1px solid #04485B;
-  transition: 0.20s ease-in-out;
+  border: 1px solid #04485b;
+  transition: 0.2s ease-in-out;
 }
 
-.btn-payment:hover{
-  color:var(--plain-white);
-  background-color:#04485B;
+.btn-payment:hover {
+  color: var(--plain-white);
+  background-color: #04485b;
 }
 
-.btn-payment:focus{
+.btn-payment:focus {
   box-shadow: none;
 }
 /*** Headlines ***/
-.secondary-title{
+.secondary-title {
   position: relative;
   margin-top: 25px;
   margin-bottom: 30px;
@@ -84,8 +84,8 @@
   color: var(--fade-blue);
 }
 
-@media screen and (max-width: 499px){
-  .secondary-title{
-     text-align: left;
+@media screen and (max-width: 499px) {
+  .secondary-title {
+    text-align: left;
   }
 }
