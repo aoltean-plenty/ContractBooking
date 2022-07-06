@@ -11,6 +11,8 @@
           <Button
             type="submit"
             button-text="Order"
+            :iconTrigger="true"
+            icon-classes="fa-solid fa-arrow-right"
             :class="[{ btn: 'btn', 'btn-submit': 'submit' }]"
           />
         </div>

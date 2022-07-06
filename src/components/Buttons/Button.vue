@@ -1,5 +1,7 @@
 <template>
-  <button :type="type" :class="btnClasses">{{ buttonText }}</button>
+  <button :type="type" :class="btnClasses">
+    {{ buttonText }} <i v-show="iconTrigger" :class="iconClasses"></i>
+  </button>
 </template>
 
 <script>
@@ -10,6 +12,8 @@ export default {
     type: String,
     buttonText: String,
     btnClasses: Array,
+    iconClasses: String,
+    iconTrigger: Boolean,
   },
 };
 </script>
