@@ -71,6 +71,7 @@
 .btn-payment:focus {
   box-shadow: none;
 }
+
 /*** Headlines ***/
 .secondary-title {
   position: relative;
@@ -88,4 +89,42 @@
   .secondary-title {
     text-align: left;
   }
+}
+
+/*** Inputs ***/
+
+label {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: var(--weight-bold);
+  font-size: var(--medium-size);
+  line-height: var(--medium-line);
+  letter-spacing: var(--small-space);
+  color: var(--dark-grey);
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-grey);
+  background-color: var(--plain-white);
+  outline: none;
+  border-radius: 5px;
+  height: 56px;
+  transition: 0.25s ease-in-out;
+}
+
+input:hover {
+  background-color: var(--background-grey);
+}
+
+select {
+  margin-bottom: 10px;
+  padding: 16px 24px;
+  gap: 8px;
+  border: 1px solid var(--border-grey);
+  border-radius: 5px;
+  outline: none;
+  height: 56px;
 }

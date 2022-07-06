@@ -4,7 +4,7 @@
   </div>
 
   <div class="col-md-12">
-    <div class="btn-contain">
+    <div class="buttons-contain">
       <Button
         type="button"
         @click="triggerActiveDebit"
@@ -140,13 +140,13 @@ export default {
 </script>
 
 <style scoped>
-.btn-contain {
+.buttons-contain {
   margin-top: 7px;
   margin-bottom: 10px;
   text-align: right;
 }
 
-.btn-contain button {
+.buttons-contain button {
   margin: 0 3px;
 }
 
@@ -157,7 +157,7 @@ export default {
 }
 
 @media screen and (max-width: 499px) {
-  .btn-contain {
+  .buttons-contain {
     margin-bottom: 10px;
     text-align: center;
   }

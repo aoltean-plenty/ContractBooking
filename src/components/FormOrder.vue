@@ -7,7 +7,7 @@
       <AccountDetails />
 
       <div class="col-md-12">
-        <div class="btn-contain">
+        <div class="buttons-contain">
           <Button
             type="submit"
             button-text="Order"
@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style scoped>
-.btn-contain {
+.buttons-contain {
   margin-top: 20px;
   text-align: right;
 }
