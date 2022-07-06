@@ -4,7 +4,7 @@
   <main>
     <div class="container">
       <div class="mx-auto">
-        <Form/>
+        <FormOrder/>
       </div>
     </div>
 
@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import Form from "./components/Form.vue";
+import FormOrder from "./components/FormOrder.vue";
 
 </script>
 

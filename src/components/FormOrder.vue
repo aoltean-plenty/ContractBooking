@@ -28,7 +28,7 @@ import PaymentDetails from "./OrderFormLayout/PaymentDetails.vue";
 import AccountDetails from "./OrderFormLayout/AccountDetails.vue";
 
 export default {
-  name: "Form",
+  name: "FormOrder",
   components: {
     Button,
     ContactDetails,
