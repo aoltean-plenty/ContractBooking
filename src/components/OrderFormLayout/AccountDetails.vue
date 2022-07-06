@@ -3,108 +3,152 @@
     <h2 class="secondary-title">Service Center Login Details</h2>
   </div>
 
-  <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.email.$error }]">
+  <div
+    :class="[
+      { 'col-md-6': 'default-grid', 'form-group--error': v$.email.$error },
+    ]"
+  >
     <BaseInput
-        label="Email"
-        type="email"
-        id="inputEmail"
-        v-model="email.email"/>
-    <ErrorMessage v-if="v$.email.$error" v-text="v$.email.$errors[0].$message"/>
+      label="Email"
+      type="email"
+      id="inputEmail"
+      v-model="email.email"
+    />
+    <ErrorMessage
+      v-if="v$.email.$error"
+      v-text="v$.email.$errors[0].$message"
+    />
   </div>
 
-  <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.email.$error }]">
+  <div
+    :class="[
+      { 'col-md-6': 'default-grid', 'form-group--error': v$.email.$error },
+    ]"
+  >
     <BaseInput
-        class="col-md-6"
-        label="Repeat Email"
-        type="email"
-        id="inputEmail2"
-        v-model="email.repeat"/>
-    <ErrorMessage v-if="v$.email.$error" v-text="v$.email.$errors[0].$message"/>
+      class="col-md-6"
+      label="Repeat Email"
+      type="email"
+      id="inputEmail2"
+      v-model="email.repeat"
+    />
+    <ErrorMessage
+      v-if="v$.email.$error"
+      v-text="v$.email.$errors[0].$message"
+    />
   </div>
 
-  <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.password.$error , 'password': 'hasPassword'}]">
+  <div
+    :class="[
+      {
+        'col-md-6': 'default-grid',
+        'form-group--error': v$.password.$error,
+        password: 'hasPassword',
+      },
+    ]"
+  >
     <BaseInput
-        label="Password"
-        id="inputPassword"
-        :type="passwordState ? 'password' : 'text'"
-        v-model="password.password"/>
+      label="Password"
+      id="inputPassword"
+      :type="passwordState ? 'password' : 'text'"
+      v-model="password.password"
+    />
     <div :class="v$.password.$error ? 'icon-contain-error' : 'icon-contain'">
-       <i @click="showPassword" :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+      <i
+        @click="showPassword"
+        :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"
+      ></i>
     </div>
-    <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
+    <ErrorMessage
+      v-if="v$.password.$error"
+      v-text="v$.password.$errors[0].$message"
+    />
   </div>
 
-  <div :class="[{'col-md-6': 'default-grid', 'form-group--error': v$.password.$error, 'password': 'hasPassword' }]">
+  <div
+    :class="[
+      {
+        'col-md-6': 'default-grid',
+        'form-group--error': v$.password.$error,
+        password: 'hasPassword',
+      },
+    ]"
+  >
     <BaseInput
-        label="Repeat Password"
-        id="inputPassword2"
-        :type="passwordState ? 'password' : 'text'"
-        v-model="password.repeat"/>
+      label="Repeat Password"
+      id="inputPassword2"
+      :type="passwordState ? 'password' : 'text'"
+      v-model="password.repeat"
+    />
     <div :class="v$.password.$error ? 'icon-contain-error' : 'icon-contain'">
-      <i @click="showPassword" :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+      <i
+        @click="showPassword"
+        :class="passwordState ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"
+      ></i>
     </div>
-    <ErrorMessage v-if="v$.password.$error" v-text="v$.password.$errors[0].$message"/>
+    <ErrorMessage
+      v-if="v$.password.$error"
+      v-text="v$.password.$errors[0].$message"
+    />
   </div>
 </template>
 
 <script>
-import useVuelidate from '@vuelidate/core'
-import {email, minLength, required, sameAs} from '@vuelidate/validators'
+import useVuelidate from "@vuelidate/core";
+import { email, minLength, required, sameAs } from "@vuelidate/validators";
 import BaseInput from "../Inputs/BaseInput.vue";
 import ErrorMessage from "../Errors/ErrorMessage.vue";
 
 export default {
   name: "AccountDetails",
-  components:{
-    BaseInput,ErrorMessage
+  components: {
+    BaseInput,
+    ErrorMessage,
   },
 
-  data(){
-    return{
+  data() {
+    return {
       v$: useVuelidate(),
       passwordState: true,
-      email:{
-        email: '',
-        repeat: '',
+      email: {
+        email: "",
+        repeat: "",
       },
 
-      password:{
-        password: '',
-        repeat: '',
+      password: {
+        password: "",
+        repeat: "",
       },
-    }
+    };
   },
 
-  methods:{
-    showPassword(){
+  methods: {
+    showPassword() {
       this.passwordState = !this.passwordState;
     },
   },
 
-
-  validations(){
-    return{
-      email:{
-        email: {required,email},
-        repeat: {required,email,sameAs: sameAs(this.email.email)},
+  validations() {
+    return {
+      email: {
+        email: { required, email },
+        repeat: { required, email, sameAs: sameAs(this.email.email) },
       },
-      password:{
-        password: {required,minLength: minLength(8),},
-        repeat: {required, sameAs: sameAs(this.password.password)},
-      }
-    }
-  }
-}
+      password: {
+        password: { required, minLength: minLength(8) },
+        repeat: { required, sameAs: sameAs(this.password.password) },
+      },
+    };
+  },
+};
 </script>
 
 <style scoped>
-
-
-.password{
+.password {
   position: relative;
 }
 
-.password .icon-contain{
+.password .icon-contain {
   position: absolute;
   right: 0;
   bottom: 24.5px;
@@ -113,8 +157,7 @@ export default {
   color: var(--dark-grey);
 }
 
-
-.password .icon-contain-error{
+.password .icon-contain-error {
   position: absolute;
   right: 0;
   bottom: 47.5px;
@@ -122,7 +165,4 @@ export default {
   cursor: pointer;
   color: var(--dark-grey);
 }
-
-
-
 </style>

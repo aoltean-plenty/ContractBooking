@@ -1,35 +1,36 @@
 <template>
-    <label><small>{{label}}</small></label>
-    <input
-        :type="type"
-        class="form-control"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        :id="id"/>
+  <label
+    ><small>{{ label }}</small></label
+  >
+  <input
+    :type="type"
+    class="form-control"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+    :id="id"
+  />
 </template>
 
 <script>
-  export default {
-    name: 'BaseInput',
-    props:{
-      id: String,
-      label:String,
-      type:String,
-      value:String,
+export default {
+  name: "BaseInput",
+  props: {
+    id: String,
+    label: String,
+    type: String,
+    value: String,
 
-      modelValue:{
-        type: [String,Number],
-        default: ''
-      }
+    modelValue: {
+      type: [String, Number],
+      default: "",
     },
-
-  }
+  },
+};
 </script>
 
 <style scoped>
-
-label{
-  font-family: 'Source Sans Pro', sans-serif;
+label {
+  font-family: "Source Sans Pro", sans-serif;
   font-style: normal;
   font-weight: var(--weight-bold);
   font-size: var(--medium-size);
@@ -38,11 +39,11 @@ label{
   color: var(--dark-grey);
 }
 
-input{
+input {
   margin-bottom: 10px;
-  padding:16px 24px;
+  padding: 16px 24px;
   box-sizing: border-box;
-  border:1px solid var(--border-grey);
+  border: 1px solid var(--border-grey);
   background-color: var(--plain-white);
   outline: none;
   border-radius: 5px;
@@ -50,18 +51,18 @@ input{
   transition: 0.25s ease-in-out;
 }
 
-input:hover{
+input:hover {
   background-color: var(--background-grey);
 }
 
-input:focus{
+input:focus {
   outline: none;
-  border-color:var(--fade-blue);
+  border-color: var(--fade-blue);
   background-color: var(--plain-white);
   box-shadow: none;
 }
 
-.form-group--error input{
+.form-group--error input {
   border-color: var(--red);
 }
 
@@ -75,8 +76,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
-
 </style>

@@ -1,24 +1,21 @@
 <template>
-    <button :type="type" :class="btnClasses">{{ buttonText }}</button>
+  <button :type="type" :class="btnClasses">{{ buttonText }}</button>
 </template>
 
 <script>
 export default {
   name: "Button",
 
-  props:{
-    type:String,
+  props: {
+    type: String,
     buttonText: String,
-    btnClasses: Array
+    btnClasses: Array,
   },
-
-}
+};
 </script>
 
 <style scoped>
-
-  div{
-    text-align: right;
-  }
-
+div {
+  text-align: right;
+}
 </style>
